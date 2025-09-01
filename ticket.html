@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Biglietto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --fg:#111; --bg:#fff; }
+  html,body{height:100%; margin:0; background:var(--bg); color:var(--fg);}
+  body{display:flex; align-items:center; justify-content:center; font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
+  .card{max-width: 900px; text-align:center; padding: 24px;}
+  h1{font-size: clamp(36px, 6vw, 72px); margin: 0 0 12px;}
+  .field{font-size: clamp(24px, 3.2vw, 42px); margin: 8px 0;}
+  .id{margin-top:14px; font-size: clamp(18px, 2.4vw, 28px); letter-spacing: 1px; opacity:.8;}
+  @media print { html,body{height:auto} .card{padding:0} }
+</style>
+<div class="card">
+  <h1>Biglietto</h1>
+  <div class="field">Nome: <strong id="nome">...</strong></div>
+  <div class="field">Cognome: <strong id="cognome">...</strong></div>
+  <div class="field">N° biglietti: <strong id="biglietti">...</strong></div>
+  <div class="id">ID: <strong id="id">...</strong></div>
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const m = (k) => params.get(k) || "";
+  document.getElementById("nome").textContent = m("nome");
+  document.getElementById("cognome").textContent = m("cognome");
+  document.getElementById("biglietti").textContent = m("biglietti");
+  document.getElementById("id").textContent = m("id");
+</script>
